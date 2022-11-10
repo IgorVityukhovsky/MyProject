@@ -17,6 +17,7 @@ func main() {
 	l := os.Getenv("zzz")
 	p := os.Getenv("zz")
 	var сhange_number string = "ИЗМ-000042185"
+	var service string
 
 	//fmt.Println("Введите номер ИЗМ: ")
 	//fmt.Scanf("%s\n", &сhange_number)
@@ -44,11 +45,16 @@ func main() {
 		chromedp.Click(`#X3Button`),  //стрелка вниз (развернуть)
 		chromedp.Click(`#X3Popup_6`), //изменение
 
-		chromedp.WaitVisible(`#var\/choices\/openLabel`),   //ждать доступность элемента (самый нижний чек)
+		chromedp.WaitVisible(`#var\/choices\/openLabel`), //ждать доступность элемента (самый нижний чек)
+		chromedp.Sleep(2*time.Second),
 		chromedp.SendKeys(`//*[@id="X11"]`, сhange_number), //вписываем номер изменения
 		chromedp.SendKeys(`//*[@id="X11"]`, (kb.Enter)),    //сработало один раз
+		chromedp.WaitVisible(`#X15Readonly`),
+		chromedp.Value(`#X15Readonly`, &service, chromedp.NodeVisible), //считывает тип работ и записывает в переменную service
+
 	); err != nil {
 		log.Fatal(err)
 	}
-	time.Sleep(time.Minute)
+	fmt.Println(service)
+	time.Sleep(time.Hour)
 }
