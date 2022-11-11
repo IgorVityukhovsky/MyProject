@@ -56,5 +56,11 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println(service)
+	if service == "РБТ-Публикация приложения на WAF-" {
+		if err := chromedp.Run(ctx,
+			chromedp.Click(`#X15Readonly`)); err != nil {
+			log.Fatal(err)
+		}
+	}
 	time.Sleep(time.Hour)
 }
