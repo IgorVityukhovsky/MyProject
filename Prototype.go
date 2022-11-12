@@ -16,8 +16,9 @@ import (
 func main() {
 	l := os.Getenv("zzz")
 	p := os.Getenv("zz")
-	var сhange_number string = "ИЗМ-000042185"
+	var сhange_number string = "ИЗМ-000042067"
 	var service string
+	coordinator := "Координатор"
 
 	//fmt.Println("Введите номер ИЗМ: ")
 	//fmt.Scanf("%s\n", &сhange_number)
@@ -38,13 +39,10 @@ func main() {
 
 	if err := chromedp.Run(ctx,
 		chromedp.Navigate(fmt.Sprintf("https://%s:%s@itsm.x5.ru/sm/index.do", l, p)),
-
-		chromedp.Click(`#ext-gen-top356`),       //кнопка поиска
-		chromedp.WaitVisible(`#ext-gen-top408`), //ждём кнопку печати
-
-		chromedp.Click(`#X3Button`),  //стрелка вниз (развернуть)
-		chromedp.Click(`#X3Popup_6`), //изменение
-
+		chromedp.Click(`#ext-gen-top356`),                //кнопка поиска
+		chromedp.WaitVisible(`#ext-gen-top408`),          //ждём кнопку печати
+		chromedp.Click(`#X3Button`),                      //стрелка вниз (развернуть)
+		chromedp.Click(`#X3Popup_6`),                     //изменение
 		chromedp.WaitVisible(`#var\/choices\/openLabel`), //ждать доступность элемента (самый нижний чек)
 		chromedp.Sleep(2*time.Second),
 		chromedp.SendKeys(`//*[@id="X11"]`, сhange_number), //вписываем номер изменения
@@ -56,9 +54,17 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println(service)
-	if service == "РБТ-Публикация приложения на WAF-" {
+	if service == "РБТ-Переустановка/ смена ОС на ВМ-" {
 		if err := chromedp.Run(ctx,
-			chromedp.Click(`#X15Readonly`)); err != nil {
+			chromedp.WaitVisible(`#X167_t`), //план работ
+			chromedp.Click(`#X167_t`),
+			chromedp.WaitVisible(`#X176_1`), //ЗНР планирование
+			chromedp.Click(`#X176_1`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.WaitVisible(`#X12`),     //исполнитель
+			chromedp.Click(`#X12`),
+			chromedp.SetValue(`#X12`, coordinator),
+		); err != nil {
 			log.Fatal(err)
 		}
 	}
