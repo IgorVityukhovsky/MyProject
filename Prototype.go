@@ -18,7 +18,7 @@ func main() {
 	p := os.Getenv("zz")
 	var сhange_number string = "ИЗМ-000042067"
 	var service string
-	coordinator := "Координатор"
+	var coordinator string = "Координатор"
 
 	//fmt.Println("Введите номер ИЗМ: ")
 	//fmt.Scanf("%s\n", &сhange_number)
@@ -63,10 +63,26 @@ func main() {
 			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
 			chromedp.WaitVisible(`#X12`),     //исполнитель
 			chromedp.Click(`#X12`),
-			chromedp.SetValue(`#X12`, coordinator),
+			chromedp.SendKeys(`#X12`, kb.Home),
+			chromedp.SendKeys(`#X12`, kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete),
+			chromedp.KeyEvent(coordinator), //chromedp.SetValue(`#X12`, coordinator), #X26
+			chromedp.Click(`#X26`),
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete),
+			chromedp.KeyEvent("01.11.22 09:00:00"),
+			//chromedp.WaitVisible(`#X55`),
+			//chromedp.Click(`#X55`),
+			chromedp.SendKeys(`#X26`, kb.Tab), //keyevent 11tab ?
+			chromedp.Click(`#X55`),
+			chromedp.SendKeys(`#X55`, kb.Home),
+			chromedp.SendKeys(`#X55`, kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete),
+			chromedp.KeyEvent("Test"),
 		); err != nil {
 			log.Fatal(err)
 		}
 	}
 	time.Sleep(time.Hour)
+}
+func many_delete(element string) {
+	chromedp.SendKeys(element, kb.Delete)
 }
