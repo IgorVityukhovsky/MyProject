@@ -10,7 +10,7 @@ func main() {
 
 	today := (time.Now()).Format("02.01.06")
 	date_slice := []string{}
-	var holidays_string string = ("16.11.22 17.11.22")
+	var holidays_string string = ("02.01.23 03.01.23 04.01.23 05.01.23 06.01.23")
 	start_time := " 09:00:00"
 
 	for n := 1; (len(date_slice)) <= 8; n++ {
@@ -23,13 +23,13 @@ func main() {
 			contain := strings.Contains(holidays_string, lookFor)
 
 			if contain == false {
-				fmt.Println("Будний день ", lookFor)
+				//fmt.Println("Будний день ", lookFor)
 				date_slice = append(date_slice, lookFor)
 			}
 
-		} else {
-			fmt.Println("Выходной день ", next_date.Format("02.01.06"))
-		}
+		} //else {
+		//	fmt.Println("Выходной день ", next_date.Format("02.01.06"))
+		//}
 	}
 	fmt.Println(date_slice)
 
