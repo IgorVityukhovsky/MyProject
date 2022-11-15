@@ -17,10 +17,9 @@ import (
 func main() {
 	l := os.Getenv("zzz")
 	p := os.Getenv("zz")
-	var сhange_number string = "ИЗМ-000042675"
+	var сhange_number string = "ИЗМ-000042688"
 	var service string
 	var coordinator string = "Витюховский Игорь (Igor.Vityukhovsky)"
-	//var tabs string = `kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab`
 	var many_delete = "\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f"
 	var save_and_exit = `/html/body/div[3]/div[2]/div/div[2]/div[1]/div/div[5]/div/div[1]/div/table/tbody/tr/td[1]/table/tbody/tr/td[2]/table/tbody/tr[2]/td[2]/em/button`
 
@@ -134,7 +133,7 @@ func main() {
 			chromedp.KeyEvent(multi_date), //вводим дату для ЗНР 3
 			chromedp.Click(save_and_exit),
 
-			// ЗНР 4 #X176_4
+			// ЗНР 4
 
 			chromedp.WaitVisible(`#X176_4`),
 			chromedp.Click(`#X176_4`),
@@ -225,6 +224,228 @@ func main() {
 			log.Fatal(err)
 		}
 	}
+	if service == "РБТ-Перенос ВМ в DMZ-" {
+		if err := chromedp.Run(ctx,
+			chromedp.WaitVisible(`#X167_t`), //план работ
+			chromedp.Click(`#X167_t`),
+			chromedp.WaitVisible(`#X176_1`), //ЗНР планирование
+			chromedp.Click(`#X176_1`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.WaitVisible(`#X12`),     //исполнитель
+			chromedp.Click(`#X12`),
+			chromedp.SendKeys(`#X12`, kb.Home),
+			chromedp.SendKeys(`#X12`, kb.Delete+many_delete),
+			chromedp.KeyEvent(coordinator), //chromedp.SetValue(`#X12`, coordinator)
+			chromedp.Click(`#X26`),         //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(plan_date), //вводим дату для ЗНР планирование
+			chromedp.KeyEvent(kb.Tab+"\t\t\t\t\t\t\t\t\t\t"),
+			chromedp.Click(`#X55`), //результат выполнения
+			chromedp.SendKeys(`#X55`, kb.Home),
+			chromedp.SendKeys(`#X55`, kb.Delete+many_delete),
+			chromedp.KeyEvent("Успешно"),
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 2
+
+			chromedp.WaitVisible(`#X176_2Border`),
+			chromedp.Click(`#X176_2Border`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(src_info_date), //вводим дату для ЗНР 2
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 3
+
+			chromedp.WaitVisible(`#X176_3`),
+			chromedp.Click(`#X176_3`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(multi_date), //вводим дату для ЗНР 3
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 4
+
+			chromedp.WaitVisible(`#X176_4`),
+			chromedp.Click(`#X176_4`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(delete_vm_date), //вводим дату для ЗНР 4
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 5
+
+			chromedp.WaitVisible(`#X176_5`),
+			chromedp.Click(`#X176_5`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(create_vm_date), //вводим дату для ЗНР 5
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 6
+
+			chromedp.WaitVisible(`#X176_6`),
+			chromedp.Click(`#X176_6`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(setup_os_win_date), //вводим дату для ЗНР 6
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 7
+
+			chromedp.WaitVisible(`#X176_7`),
+			chromedp.Click(`#X176_7`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(setup_os_nx_date), //вводим дату для ЗНР 7
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 8
+
+			chromedp.WaitVisible(`#X176_8`),
+			chromedp.Click(`#X176_8`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(db_monitoring_date), //вводим дату для ЗНР 8
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 9
+
+			chromedp.WaitVisible(`#X176_9`),
+			chromedp.Click(`#X176_9`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(setup_src_date), //вводим дату для ЗНР 9
+			chromedp.Click(save_and_exit),
+		); err != nil {
+			log.Fatal(err)
+		}
+	}
+	if service == "РБТ-Снятие ресурса с внешней публикации-" || service == "РБТ-Публикация приложения на WAF-" {
+		if err := chromedp.Run(ctx,
+			chromedp.WaitVisible(`#X167_t`), //план работ
+			chromedp.Click(`#X167_t`),
+			chromedp.WaitVisible(`#X176_1`), //ЗНР планирование
+			chromedp.Click(`#X176_1`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.WaitVisible(`#X12`),     //исполнитель
+			chromedp.Click(`#X12`),
+			chromedp.SendKeys(`#X12`, kb.Home),
+			chromedp.SendKeys(`#X12`, kb.Delete+many_delete),
+			chromedp.KeyEvent(coordinator), //chromedp.SetValue(`#X12`, coordinator)
+			chromedp.Click(`#X26`),         //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(plan_date), //вводим дату для ЗНР планирование
+			chromedp.KeyEvent(kb.Tab+"\t\t\t\t\t\t\t\t\t\t"),
+			chromedp.Click(`#X55`), //результат выполнения
+			chromedp.SendKeys(`#X55`, kb.Home),
+			chromedp.SendKeys(`#X55`, kb.Delete+many_delete),
+			chromedp.KeyEvent("Успешно"),
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 2
+
+			chromedp.WaitVisible(`#X176_2Border`),
+			chromedp.Click(`#X176_2Border`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(src_info_date), //вводим дату для ЗНР 2
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 3
+
+			chromedp.WaitVisible(`#X176_3`),
+			chromedp.Click(`#X176_3`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(multi_date), //вводим дату для ЗНР 3
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 4
+
+			chromedp.WaitVisible(`#X176_4`),
+			chromedp.Click(`#X176_4`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(delete_vm_date), //вводим дату для ЗНР 4
+			chromedp.Click(save_and_exit),
+		); err != nil {
+			log.Fatal(err)
+		}
+	}
+	if service == "РБТ-Изменение политики безопасности WAF-" || service == "РБТ-Удаление DNS записи в публичном домене-" || service == "РБТ-Добавление DNS записи в публичном домене-" {
+		if err := chromedp.Run(ctx,
+			chromedp.WaitVisible(`#X167_t`), //план работ
+			chromedp.Click(`#X167_t`),
+			chromedp.WaitVisible(`#X176_1`), //ЗНР планирование
+			chromedp.Click(`#X176_1`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.WaitVisible(`#X12`),     //исполнитель
+			chromedp.Click(`#X12`),
+			chromedp.SendKeys(`#X12`, kb.Home),
+			chromedp.SendKeys(`#X12`, kb.Delete+many_delete),
+			chromedp.KeyEvent(coordinator), //chromedp.SetValue(`#X12`, coordinator)
+			chromedp.Click(`#X26`),         //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(plan_date), //вводим дату для ЗНР планирование
+			chromedp.KeyEvent(kb.Tab+"\t\t\t\t\t\t\t\t\t\t"),
+			chromedp.Click(`#X55`), //результат выполнения
+			chromedp.SendKeys(`#X55`, kb.Home),
+			chromedp.SendKeys(`#X55`, kb.Delete+many_delete),
+			chromedp.KeyEvent("Успешно"),
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 2
+
+			chromedp.WaitVisible(`#X176_2Border`),
+			chromedp.Click(`#X176_2Border`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(src_info_date), //вводим дату для ЗНР 2
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 3
+
+			chromedp.WaitVisible(`#X176_3`),
+			chromedp.Click(`#X176_3`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(multi_date), //вводим дату для ЗНР 3
+			chromedp.Click(save_and_exit),
+		); err != nil {
+			log.Fatal(err)
+		}
+	}
+
 	fmt.Println("Работы успешно распланированы")
 	time.Sleep(time.Hour)
 }
