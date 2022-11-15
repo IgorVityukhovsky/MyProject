@@ -21,7 +21,7 @@ func main() {
 	var service string
 	var coordinator string = "Витюховский Игорь (Igor.Vityukhovsky)"
 	//var tabs string = `kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab+kb.Tab`
-	//var many_delete = "kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete"
+	var many_delete = "\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f"
 	var save_and_exit = `/html/body/div[3]/div[2]/div/div[2]/div[1]/div/div[5]/div/div[1]/div/table/tbody/tr/td[1]/table/tbody/tr/td[2]/table/tbody/tr[2]/td[2]/em/button`
 
 	//fmt.Println("Введите номер ИЗМ: ")
@@ -54,9 +54,9 @@ func main() {
 	delete_vm_date := (date_slice[2]) + start_time
 	create_vm_date := (date_slice[3]) + start_time
 	setup_os_win_date := (date_slice[4]) + start_time
-	//setup_os_nx_date := (date_slice[5]) + start_time
-	//db_monitoring_date := (date_slice[6]) + start_time
-	//setup_src_date := (date_slice[7]) + start_time
+	setup_os_nx_date := (date_slice[5]) + start_time
+	db_monitoring_date := (date_slice[6]) + start_time
+	setup_src_date := (date_slice[7]) + start_time
 
 	opts := append(chromedp.DefaultExecAllocatorOptions[:],
 		chromedp.Flag("headless", false),
@@ -99,18 +99,16 @@ func main() {
 			chromedp.WaitVisible(`#X12`),     //исполнитель
 			chromedp.Click(`#X12`),
 			chromedp.SendKeys(`#X12`, kb.Home),
-			chromedp.SendKeys(`#X12`, kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete),
+			chromedp.SendKeys(`#X12`, kb.Delete+many_delete),
 			chromedp.KeyEvent(coordinator), //chromedp.SetValue(`#X12`, coordinator)
 			chromedp.Click(`#X26`),         //дата
 			chromedp.SendKeys(`#X26`, kb.Home),
-			chromedp.SendKeys(`#X26`, kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
 			chromedp.KeyEvent(plan_date), //вводим дату для ЗНР планирование
-
 			chromedp.KeyEvent(kb.Tab+"\t\t\t\t\t\t\t\t\t\t"),
-
 			chromedp.Click(`#X55`), //результат выполнения
 			chromedp.SendKeys(`#X55`, kb.Home),
-			chromedp.SendKeys(`#X55`, kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete),
+			chromedp.SendKeys(`#X55`, kb.Delete+many_delete),
 			chromedp.KeyEvent("Успешно"),
 			chromedp.Click(save_and_exit),
 
@@ -121,7 +119,7 @@ func main() {
 			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
 			chromedp.Click(`#X26`),           //дата
 			chromedp.SendKeys(`#X26`, kb.Home),
-			chromedp.SendKeys(`#X26`, kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
 			chromedp.KeyEvent(src_info_date), //вводим дату для ЗНР 2
 			chromedp.Click(save_and_exit),
 
@@ -132,7 +130,7 @@ func main() {
 			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
 			chromedp.Click(`#X26`),           //дата
 			chromedp.SendKeys(`#X26`, kb.Home),
-			chromedp.SendKeys(`#X26`, kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
 			chromedp.KeyEvent(multi_date), //вводим дату для ЗНР 3
 			chromedp.Click(save_and_exit),
 
@@ -143,7 +141,7 @@ func main() {
 			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
 			chromedp.Click(`#X26`),           //дата
 			chromedp.SendKeys(`#X26`, kb.Home),
-			chromedp.SendKeys(`#X26`, kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
 			chromedp.KeyEvent(multi_date), //вводим дату для ЗНР 4
 			chromedp.Click(save_and_exit),
 
@@ -154,7 +152,7 @@ func main() {
 			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
 			chromedp.Click(`#X26`),           //дата
 			chromedp.SendKeys(`#X26`, kb.Home),
-			chromedp.SendKeys(`#X26`, kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
 			chromedp.KeyEvent(multi_date), //вводим дату для ЗНР 5
 			chromedp.Click(save_and_exit),
 
@@ -165,7 +163,7 @@ func main() {
 			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
 			chromedp.Click(`#X26`),           //дата
 			chromedp.SendKeys(`#X26`, kb.Home),
-			chromedp.SendKeys(`#X26`, kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
 			chromedp.KeyEvent(delete_vm_date), //вводим дату для ЗНР 6
 			chromedp.Click(save_and_exit),
 
@@ -176,7 +174,7 @@ func main() {
 			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
 			chromedp.Click(`#X26`),           //дата
 			chromedp.SendKeys(`#X26`, kb.Home),
-			chromedp.SendKeys(`#X26`, kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
 			chromedp.KeyEvent(create_vm_date), //вводим дату для ЗНР 7
 			chromedp.Click(save_and_exit),
 
@@ -187,12 +185,46 @@ func main() {
 			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
 			chromedp.Click(`#X26`),           //дата
 			chromedp.SendKeys(`#X26`, kb.Home),
-			chromedp.SendKeys(`#X26`, kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete+kb.Delete),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
 			chromedp.KeyEvent(setup_os_win_date), //вводим дату для ЗНР 8
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 9
+
+			chromedp.WaitVisible(`#X176_9`),
+			chromedp.Click(`#X176_9`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(setup_os_nx_date), //вводим дату для ЗНР 9
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 10
+
+			chromedp.WaitVisible(`#X176_10`),
+			chromedp.Click(`#X176_10`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(db_monitoring_date), //вводим дату для ЗНР 10
+			chromedp.Click(save_and_exit),
+
+			// ЗНР 11
+
+			chromedp.WaitVisible(`#X176_11`),
+			chromedp.Click(`#X176_11`),
+			chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			chromedp.Click(`#X26`),           //дата
+			chromedp.SendKeys(`#X26`, kb.Home),
+			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			chromedp.KeyEvent(setup_src_date), //вводим дату для ЗНР 11
 			chromedp.Click(save_and_exit),
 		); err != nil {
 			log.Fatal(err)
 		}
 	}
+	fmt.Println("Работы успешно распланированы")
 	time.Sleep(time.Hour)
 }
