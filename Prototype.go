@@ -17,7 +17,7 @@ import (
 func main() {
 	l := os.Getenv("zzz")
 	p := os.Getenv("zz")
-	var сhange_number string = "ИЗМ-000042688"
+	var сhange_number string = "ИЗМ-000042956"
 	var service string
 	var coordinator string = "Витюховский Игорь (Igor.Vityukhovsky)"
 	var many_delete = "\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f"
@@ -397,7 +397,7 @@ func main() {
 			log.Fatal(err)
 		}
 	}
-	if service == "РБТ-Изменение политики безопасности WAF-" || service == "РБТ-Удаление DNS записи в публичном домене-" || service == "РБТ-Добавление DNS записи в публичном домене-" {
+	if service == "РБТ-Изменение политики безопасности WAF-" || service == "РБТ-Удаление DNS записи в публичном домене-" || service == "РБТ-Добавление DNS записи в публичном домене-" || service == "РБТ-Изменение DNS записи в публичном домене-" {
 		if err := chromedp.Run(ctx,
 			chromedp.WaitVisible(`#X167_t`), //план работ
 			chromedp.Click(`#X167_t`),
