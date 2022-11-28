@@ -69,10 +69,10 @@ time.sleep(10)
 iFrames = driver.find_elements(By.TAG_NAME, 'iframe')
 driver.switch_to.frame(iFrames[1])
 
-plan_tab = driver.find_element(By.XPATH, '//*[@id="X167_t"]')
+plan_tab = driver.find_element(By.XPATH, '//*[@id="#X171_t"]')
 plan_tab.click()
 
-ZNR_plan = driver.find_element(By.XPATH, '//*[@id="X176_1"]')
+ZNR_plan = driver.find_element(By.XPATH, '//*[@id="#X180_1"]')
 ZNR_plan.click()
 time.sleep(10)
 
@@ -111,7 +111,7 @@ time.sleep(20)
 
 
 
-ZNR_SRC_info = driver.find_element(By.XPATH, '//*[@id="X176_2"]')
+ZNR_SRC_info = driver.find_element(By.XPATH, '//*[@id="#X180_2"]')
 ZNR_SRC_info.click()
 time.sleep(10)
 input_date_ZNR_field = driver.find_element(By.XPATH, '//*[@id="X26"]')
@@ -127,7 +127,7 @@ actions = ActionChains(driver)\
 
 time.sleep(10)
 
-ZNR_backup_off = driver.find_element(By.XPATH, '//*[@id="X176_3"]')
+ZNR_backup_off = driver.find_element(By.XPATH, '//*[@id="#X180_3"]')
 ZNR_backup_off.click()
 time.sleep(10)
 input_date_ZNR_field = driver.find_element(By.XPATH, '//*[@id="X26"]')
@@ -144,7 +144,7 @@ actions = ActionChains(driver)\
 time.sleep(10)
 
 
-ZNR_bd_monitor_off = driver.find_element(By.XPATH, '//*[@id="X176_4"]')
+ZNR_bd_monitor_off = driver.find_element(By.XPATH, '//*[@id="#X180_4"]')
 ZNR_bd_monitor_off.click()
 time.sleep(10)
 input_date_ZNR_field = driver.find_element(By.XPATH, '//*[@id="X26"]')
@@ -160,7 +160,7 @@ actions = ActionChains(driver)\
 
 time.sleep(10)
 
-ZNR_sert_delete = driver.find_element(By.XPATH, '//*[@id="X176_5"]')
+ZNR_sert_delete = driver.find_element(By.XPATH, '//*[@id="#X180_5"]')
 
 actions = ActionChains(driver)\
     .send_keys(Keys.TAB)\
@@ -192,7 +192,7 @@ actions = ActionChains(driver)\
 time.sleep(10)
 
 
-ZNR_VM_delete = driver.find_element(By.XPATH, '//*[@id="X176_6"]')
+ZNR_VM_delete = driver.find_element(By.XPATH, '//*[@id="#X180_6"]')
 ZNR_VM_delete.click()
 time.sleep(10)
 input_date_ZNR_field = driver.find_element(By.XPATH, '//*[@id="X26"]')
@@ -209,7 +209,7 @@ actions = ActionChains(driver)\
 time.sleep(10)
 
 
-ZNR_VM_create = driver.find_element(By.XPATH, '//*[@id="X176_7"]')
+ZNR_VM_create = driver.find_element(By.XPATH, '//*[@id="#X180_7"]')
 ZNR_VM_create.click()
 time.sleep(10)
 input_date_ZNR_field = driver.find_element(By.XPATH, '//*[@id="X26"]')
@@ -226,7 +226,7 @@ actions = ActionChains(driver)\
 time.sleep(10)
 
 
-ZNR_OS_win_setup = driver.find_element(By.XPATH, '//*[@id="X176_8"]')
+ZNR_OS_win_setup = driver.find_element(By.XPATH, '//*[@id="#X180_8"]')
 ZNR_OS_win_setup.click()
 time.sleep(10)
 input_date_ZNR_field = driver.find_element(By.XPATH, '//*[@id="X26"]')
@@ -243,7 +243,7 @@ actions = ActionChains(driver)\
 time.sleep(10)
 
 
-ZNR_OS_linux_setup = driver.find_element(By.XPATH, '//*[@id="X176_9"]')
+ZNR_OS_linux_setup = driver.find_element(By.XPATH, '//*[@id="#X180_9"]')
 ZNR_OS_linux_setup.click()
 time.sleep(10)
 input_date_ZNR_field = driver.find_element(By.XPATH, '//*[@id="X26"]')
@@ -259,7 +259,7 @@ actions = ActionChains(driver)\
 
 time.sleep(10)
 
-ZNR_bd_monitor_on = driver.find_element(By.XPATH, '//*[@id="X176_10"]')
+ZNR_bd_monitor_on = driver.find_element(By.XPATH, '//*[@id="#X180_10"]')
 ZNR_bd_monitor_on.click()
 time.sleep(10)
 input_date_ZNR_field = driver.find_element(By.XPATH, '//*[@id="X26"]')
@@ -276,7 +276,7 @@ actions = ActionChains(driver)\
 time.sleep(10)
 
 
-ZNR_SRC_setup = driver.find_element(By.XPATH, '//*[@id="X176_11"]')
+ZNR_SRC_setup = driver.find_element(By.XPATH, '//*[@id="#X180_11"]')
 ZNR_SRC_setup.click()
 time.sleep(10)
 input_date_ZNR_field = driver.find_element(By.XPATH, '//*[@id="X26"]')
@@ -311,7 +311,7 @@ print('Работы успешно распланированы')
 # start_search_button = driver.find_element_by_xpath('//*[@id="ext-gen-top2459"]') #start_search_button.click()
 # save_and_exit_button = driver.find_element_by_xpath('//*[@id="ext-gen-top650"]')
 
-# plan_tab = driver.find_element_by_xpath('//*[@id="X167_t"]')
+# plan_tab = driver.find_element_by_xpath('//*[@id="#X171_t"]')
 
 # input_change_number_field = driver.find_element_by_xpath('//*[@id="X11"]') #input_change_number_field.send_keys(change_number) 
 # input_executor_ZNR_field = driver.find_element_by_xpath('//*[@id="X12"]') #input_executor_ZNR_field.send_keys(coordinator)
