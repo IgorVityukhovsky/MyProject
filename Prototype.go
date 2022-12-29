@@ -199,7 +199,7 @@ func main() {
 			chromedp.KeyEvent(setup_os_nx_date), //вводим дату для ЗНР 9
 			chromedp.Click(save_and_exit),
 
-			// ЗНР 10
+			// ЗНР 10 БД
 
 			chromedp.WaitVisible(`#X180_10`),
 			chromedp.Click(`#X180_10`),
@@ -210,7 +210,7 @@ func main() {
 			chromedp.KeyEvent(db_monitoring_date), //вводим дату для ЗНР 10
 			chromedp.Click(save_and_exit),
 
-			// ЗНР 11
+			// ЗНР 11 СРК
 
 			chromedp.WaitVisible(`#X180_11`),
 			chromedp.Click(`#X180_11`),
@@ -220,6 +220,17 @@ func main() {
 			chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
 			chromedp.KeyEvent(setup_src_date), //вводим дату для ЗНР 11
 			chromedp.Click(save_and_exit),
+
+			// // ЗНР 12 (сетевые правила)
+
+			// chromedp.WaitVisible(`#X180_12`),
+			// chromedp.Click(`#X180_11`),
+			// chromedp.WaitVisible(`#X44Icon`), //ждать "к исполнению" (гарантия загрузки нужной страницы)
+			// chromedp.Click(`#X26`),           //дата
+			// chromedp.SendKeys(`#X26`, kb.Home),
+			// chromedp.SendKeys(`#X26`, kb.Delete+many_delete),
+			// chromedp.KeyEvent(setup_os_nx_date), //вводим дату для ЗНР 9
+			// chromedp.Click(save_and_exit),
 		); err != nil {
 			log.Fatal(err)
 		}
